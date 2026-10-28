@@ -60,13 +60,13 @@ export function Documentation() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-[var(--color-bg)] to-white py-20 lg:py-32">
+      <section className="relative bg-linear-to-b from-bg to-surface py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent)] mb-4">Documentación de Usuario</span>
-          <h1 className="text-4xl lg:text-5xl font-bold text-[var(--color-ink)] mb-6">
+          <span className="label-brutal text-accent mb-4">Documentación de Usuario</span>
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-6">
             Guías para empezar y operar con CampoBase
           </h1>
-          <p className="text-lg text-[var(--color-ink-soft)] max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-ink-soft max-w-2xl mx-auto mb-10">
             Documentación orientada a usuarios finales: administradores y operadores de campo.
             Sin jerga técnica. Capturas reales. Paso a paso.
           </p>
@@ -82,10 +82,10 @@ export function Documentation() {
       </section>
 
       {/* Search */}
-      <section className="py-10 bg-white border-y-2 border-[var(--color-border)]">
+      <section className="py-10 bg-surface border-y-2 border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-xl mx-auto">
-            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--color-ink-muted)]" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ink-muted" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             <input
               type="search"
               placeholder="Buscar en la documentación... (ej: comprobante, certificado, offline)"
@@ -96,36 +96,36 @@ export function Documentation() {
       </section>
 
       {/* Categories */}
-      <section className="py-20 bg-[var(--color-bg)]">
+      <section className="py-20 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {docCategories.map((category, catIndex) => (
               <section key={catIndex} className="card-brutal p-6 h-full hover:shadow-brutal transition-shadow duration-200">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-brutal bg-[var(--color-accent-soft)] flex items-center justify-center">
-                    <category.icon className="w-5 h-5 text-[var(--color-accent)]" aria-hidden="true" />
+                  <div className="w-10 h-10 rounded-brutal bg-accent-soft flex items-center justify-center">
+                    <category.icon className="w-5 h-5 text-accent" aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg font-bold text-[var(--color-ink)]">{category.category}</h3>
+                  <h3 className="text-lg font-bold text-ink">{category.category}</h3>
                 </div>
                 <ul className="space-y-3">
                   {category.articles.map((article, i) => (
                     <li key={i}>
                       <Link
                         to={article.slug}
-                        className="flex items-center justify-between gap-3 p-3 bg-[var(--color-surface-2)] rounded-brutal hover:bg-[var(--color-accent-soft)] hover:border-[var(--color-accent)] border border-transparent transition-all duration-150"
+                        className="flex items-center justify-between gap-3 p-3 bg-surface-2 rounded-brutal hover:bg-accent-soft hover:border-accent border border-transparent transition-all duration-150"
                       >
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-[var(--color-ink)]">{article.title}</p>
-                          <p className="text-sm text-[var(--color-ink-muted)] mt-0.5 truncate">{article.desc}</p>
+                          <p className="font-medium text-ink">{article.title}</p>
+                          <p className="text-sm text-ink-muted mt-0.5 truncate">{article.desc}</p>
                         </div>
-                        <svg className="w-5 h-5 text-[var(--color-ink-muted)] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        <svg className="w-5 h-5 text-ink-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                       </Link>
                     </li>
                   ))}
                 </ul>
                 <Link
                   to={`/docs/category/${category.category.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="block mt-4 text-center text-sm font-bold text-[var(--color-accent)] hover:underline"
+                  className="block mt-4 text-center text-sm font-bold text-accent hover:underline"
                 >
                   Ver todos ({category.articles.length}) →
                 </Link>
@@ -136,10 +136,10 @@ export function Documentation() {
       </section>
 
       {/* Quick Links */}
-      <section className="py-16 bg-white border-y-2 border-[var(--color-border)]">
+      <section className="py-16 bg-surface border-y-2 border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-2xl lg:text-3xl font-bold text-[var(--color-ink)] mb-10">Accesos Rápidos</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="text-center text-2xl lg:text-3xl font-bold text-ink mb-10">Accesos Rápidos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Smartphone, title: 'Guía Operador Móvil', desc: 'Iniciar/cerrar visitas, fotos, cobros', href: '/docs/guides/operator-guide' },
               { icon: Shield, title: 'Guía Administrador', desc: 'Dashboard, clientes, rendiciones, exportar', href: '/docs/guides/admin-guide' },
@@ -147,12 +147,12 @@ export function Documentation() {
               { icon: LifeBuoy, title: 'Centro de Ayuda / FAQ', desc: 'Respuestas rápidas, troubleshooting', href: '/docs/faq' },
             ].map((item, i) => (
               <Link key={i} to={item.href} className="card-brutal p-6 text-center hover:shadow-brutal transition-shadow duration-200 group">
-                <div className="w-14 h-14 rounded-brutal bg-[var(--color-accent-soft)] flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-200">
-                  <item.icon className="w-7 h-7 text-[var(--color-accent)]" aria-hidden="true" />
+                <div className="w-14 h-14 rounded-brutal bg-accent-soft flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-200">
+                  <item.icon className="w-7 h-7 text-accent" aria-hidden="true" />
                 </div>
-                <h3 className="font-bold text-[var(--color-ink)] mb-2">{item.title}</h3>
-                <p className="text-sm text-[var(--color-ink-muted)] mb-4">{item.desc}</p>
-                <span className="inline-flex items-center gap-1 text-[var(--color-accent)] font-bold text-sm group-hover:gap-2 transition-all">
+                <h3 className="font-bold text-ink mb-2">{item.title}</h3>
+                <p className="text-sm text-ink-muted mb-4">{item.desc}</p>
+                <span className="inline-flex items-center gap-1 text-accent font-bold text-sm group-hover:gap-2 transition-all">
                   Leer guía
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </span>
@@ -163,14 +163,14 @@ export function Documentation() {
       </section>
 
       {/* Video Tutorials */}
-      <section className="py-20 bg-[var(--color-bg)]">
+      <section className="py-20 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="label-brutal text-[var(--color-accent)] mb-4">Tutoriales en Video</span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--color-ink)] mb-4">Aprende viendo</h2>
-            <p className="text-[var(--color-ink-soft)] max-w-2xl mx-auto">Tutoriales cortos (2-5 min) grabados en la app real. Sin edición de marketing.</p>
+            <span className="label-brutal text-accent mb-4">Tutoriales en Video</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-ink mb-4">Aprende viendo</h2>
+            <p className="text-ink-soft max-w-2xl mx-auto">Tutoriales cortos (2-5 min) grabados en la app real. Sin edición de marketing.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
             {[
               { title: 'Primer login y dashboard', duration: '3:24', desc: 'Login, navegación, dashboard admin' },
               { title: 'Crear primer recorrido', duration: '4:12', desc: 'Clientes, operadores, drag & drop' },
@@ -180,16 +180,16 @@ export function Documentation() {
               { title: 'Rendiciones de efectivo', duration: '3:55', desc: 'Saldo, registrar, anular, historial' },
             ].map((video, i) => (
               <article key={i} className="card-brutal p-4 hover:shadow-brutal transition-shadow duration-200">
-                <div className="aspect-video bg-[var(--color-surface-2)] rounded-brutal mb-3 relative flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[var(--color-accent-soft)] flex items-center justify-center">
-                    <Video className="w-8 h-8 text-[var(--color-accent)]" aria-hidden="true" />
+                <div className="aspect-video bg-surface-2 rounded-brutal mb-3 relative flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-accent-soft flex items-center justify-center">
+                    <Video className="w-8 h-8 text-accent" aria-hidden="true" />
                   </div>
                 </div>
-                <h3 className="font-bold text-[var(--color-ink)] mb-1">{video.title}</h3>
-                <p className="text-sm text-[var(--color-ink-muted)] mb-2">{video.desc}</p>
-                <div className="flex items-center justify-between text-xs text-[var(--color-ink-muted)]">
+                <h3 className="font-bold text-ink mb-1">{video.title}</h3>
+                <p className="text-sm text-ink-muted mb-2">{video.desc}</p>
+                <div className="flex items-center justify-between text-xs text-ink-muted">
                   <span>{video.duration}</span>
-                  <Link to={`/docs/videos/${i+1}`} className="text-[var(--color-accent)] font-bold hover:underline flex items-center gap-1">
+                  <Link to={`/docs/videos/${i+1}`} className="text-accent font-bold hover:underline flex items-center gap-1">
                     Ver <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </Link>
                 </div>
@@ -200,19 +200,19 @@ export function Documentation() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--color-ink)] text-white">
+      <section className="py-20 bg-ink text-on-dark">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent-soft)] mb-4">¿No encontraste lo que buscabas?</span>
+          <span className="label-brutal text-accent-soft mb-4">¿No encontraste lo que buscabas?</span>
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">Escríbenos y te ayudamos</h2>
-          <p className="text-slate-300 mb-8 max-w-xl mx-auto">Nuestro equipo responde en menos de 24h. También puedes agendar una llamada de 15 min.</p>
+          <p className="text-on-dark-muted mb-8 max-w-xl mx-auto">Nuestro equipo responde en menos de 24h. También puedes agendar una llamada de 15 min.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-white text-[var(--color-ink)] hover:bg-slate-100">
+            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-surface text-ink hover:bg-surface-2">
               Contactar Soporte
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </Link>
-            <Link to="/features" className="btn btn-outline border-white text-white hover:bg-white/10 text-lg px-8 py-4">Ver Features</Link>
+            <Link to="/features" className="btn btn-outline border-on-dark text-on-dark hover:bg-surface/10 text-lg px-8 py-4">Ver Features</Link>
           </div>
         </div>
       </section>

@@ -30,20 +30,20 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-ink)] text-white border-t-2 border-[var(--color-border)]">
+    <footer className="bg-ink text-on-dark border-t-2 border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6" aria-label="CampoBase - Inicio">
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
-                <svg className="w-7 h-7 text-[var(--color-ink)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="w-12 h-12 rounded-brutal-lg bg-surface flex items-center justify-center">
+                <svg className="w-7 h-7 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
               </div>
-              <span className="font-bold text-xl text-white">CampoBase</span>
+              <span className="font-bold text-xl text-on-dark">CampoBase</span>
             </Link>
-            <p className="text-slate-300 text-sm leading-relaxed max-w-xs">
+            <p className="text-on-dark-muted text-sm leading-relaxed max-w-xs">
               Sistema SaaS de gestión operativa de campo para empresas de servicios, control de plagas, mantenimiento y logística.
             </p>
             <div className="mt-6 flex gap-4">
@@ -54,7 +54,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-border-strong hover:text-on-dark transition-colors"
                 >
                   <item.icon className="w-5 h-5" aria-hidden="true" />
                 </a>
@@ -64,11 +64,11 @@ export function Footer() {
 
           {/* Product Links */}
           <nav aria-label="Producto">
-            <h3 className="label-brutal text-white mb-4">Producto</h3>
+            <h3 className="label-brutal text-on-dark mb-4">Producto</h3>
             <ul className="space-y-3">
               {footerLinks.producto.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-slate-300 hover:text-white text-sm transition-colors">
+                  <Link to={link.href} className="text-on-dark-muted hover:text-on-dark text-sm transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -78,11 +78,11 @@ export function Footer() {
 
           {/* Empresa Links */}
           <nav aria-label="Empresa">
-            <h3 className="label-brutal text-white mb-4">Empresa</h3>
+            <h3 className="label-brutal text-on-dark mb-4">Empresa</h3>
             <ul className="space-y-3">
               {footerLinks.empresa.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-slate-300 hover:text-white text-sm transition-colors">
+                  <Link to={link.href} className="text-on-dark-muted hover:text-on-dark text-sm transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -92,11 +92,11 @@ export function Footer() {
 
           {/* Legal Links */}
           <nav aria-label="Legal">
-            <h3 className="label-brutal text-white mb-4">Legal</h3>
+            <h3 className="label-brutal text-on-dark mb-4">Legal</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-slate-300 hover:text-white text-sm transition-colors">
+                  <Link to={link.href} className="text-on-dark-muted hover:text-on-dark text-sm transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -106,17 +106,17 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 lg:mt-16 pt-8 border-t border-slate-800">
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-ink-soft">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-400 text-sm">
+            <p className="text-border-strong text-sm">
               © {new Date().getFullYear()} CampoBase. Todos los derechos reservados.
             </p>
-            <div className="flex items-center gap-6 text-sm text-slate-400">
-              <a href="mailto:hola@campobase.io" className="flex items-center gap-1 hover:text-white transition-colors">
+            <div className="flex items-center gap-6 text-sm text-border-strong">
+              <a href="mailto:hola@campobase.io" className="flex items-center gap-1 hover:text-on-dark transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 <span>hola@campobase.io</span>
               </a>
-              <a href="tel:+5491100000000" className="flex items-center gap-1 hover:text-white transition-colors">
+              <a href="tel:+5491100000000" className="flex items-center gap-1 hover:text-on-dark transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 015.516 5.516l1.13 -2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.018 3 6V5z" /></svg>
                 <span>+54 9 11 0000 0000</span>
               </a>

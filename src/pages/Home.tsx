@@ -1,5 +1,17 @@
 import { Link } from 'react-router-dom'
-import { Shield, DollarSign, FileText, Users, CheckCircle2 } from 'lucide-react'
+import {
+  Shield,
+  DollarSign,
+  FileText,
+  Users,
+  CheckCircle2,
+  Smartphone,
+  History,
+  Download,
+  ArrowRight,
+} from 'lucide-react'
+import { ShotFrame } from '../components/ShotFrame'
+import { ProductSlider, type Slide } from '../components/ProductSlider'
 
 const pilotStats = [
   { value: '148', label: 'Clientes activos', icon: Users },
@@ -8,102 +20,219 @@ const pilotStats = [
   { value: '100%', label: 'Trazabilidad', icon: CheckCircle2 },
 ]
 
+const rubros = [
+  'Empresas de servicios',
+  'Control de plagas',
+  'Mantenimiento',
+  'Logística',
+]
+
+const slides: Slide[] = [
+  {
+    id: 'operador',
+    badge: 'Vista operador',
+    title: 'El operario sabe exactamente qué hacer hoy',
+    description:
+      'Desde el celular ve su recorrido, el orden de las visitas, el horario acordado con cada cliente y cuánto efectivo tiene pendiente de rendir.',
+    points: [
+      'Agenda del día con el estado de cada visita',
+      'Horario sugerido por cliente, para no llegar fuera de tiempo',
+      'Cobro, comprobante y observaciones en la misma pantalla',
+    ],
+    image: '/screenshots/operador-campo.webp',
+    alt: 'Vista móvil del operario con el recorrido del día y el efectivo pendiente de rendir',
+    frame: 'phone',
+  },
+  {
+    id: 'dashboard',
+    badge: 'Panel admin',
+    title: 'Vos mirás el día en tiempo real, no a fin de mes',
+    description:
+      'El resumen operativo muestra lo que se programó, lo que se realizó, lo que quedó pendiente y cuánta plata entró, sin pedirle un reporte a nadie.',
+    points: [
+      'Visitas realizadas, pendientes y no realizadas en vivo',
+      'Cobrado hoy separado por medio de pago',
+      'Alertas de visitas que no se hicieron y pagos que no entraron',
+    ],
+    image: '/screenshots/dashboard-admin.webp',
+    alt: 'Panel de administración con el resumen operativo diario y las visitas de la jornada',
+  },
+  {
+    id: 'pagos',
+    badge: 'Cobros',
+    title: 'Cada cobro con comprobante y sin cuentas pendientes',
+    description:
+      'El cierre de visita exige observaciones y, en transferencias, la foto del comprobante. Cada cobro queda asociado a su visita.',
+    points: [
+      'Efectivo, transferencia o pago pendiente',
+      'Foto obligatoria del comprobante en transferencias',
+      'El pago aparece en el panel apenas se registra',
+    ],
+    image: '/screenshots/pagos-cobranzas.webp',
+    alt: 'Pestaña de pagos y cobranzas del panel de administración',
+  },
+  {
+    id: 'rendiciones',
+    badge: 'Efectivo',
+    title: 'El efectivo del operario no se pierde: se rinde y se audita',
+    description:
+      'El operario ve su saldo pendiente y el administrador registra la rendición en un solo paso, sin planillas intermedias.',
+    points: [
+      'Saldo pendiente de efectivo calculado automáticamente',
+      'Rendición en un paso, con historial que no se borra',
+      'Anulaciones registradas sin tocar el histórico',
+    ],
+    image: '/screenshots/rendiciones-efectivo.webp',
+    alt: 'Pestaña de rendiciones de efectivo con el saldo pendiente por operario',
+  },
+  {
+    id: 'certificados',
+    badge: 'Certificados',
+    title: 'Certificados municipales sin errores ni planillas',
+    description:
+      'Histórico importado, continuidad por cliente y generación de certificados nuevos desde las visitas realizadas, listos para imprimir.',
+    points: [
+      'Histórico consultable con el número literal de cada certificado',
+      'Continuidad configurada por cliente',
+      'PDF del mes listo para imprimir, sin retipar nada',
+    ],
+    image: '/screenshots/certificados.webp',
+    alt: 'Pestaña de certificados municipales con el histórico del mes',
+  },
+]
+
 const valueProps = [
   {
     icon: Shield,
-    title: 'Operación Real',
+    title: 'Operación real',
     desc: 'Diseñado en campo con operadores reales. Resuelve problemas reales de empresas de servicios, control de plagas, mantenimiento y logística.',
   },
   {
+    icon: Smartphone,
+    title: 'App móvil para el operario',
+    desc: 'La vista de campo está pensada para el celular: menos toques, botón grande y toda la información de la visita en un solo lugar.',
+  },
+  {
     icon: DollarSign,
-    title: 'Cobro y Rendición',
+    title: 'Cobro y rendición',
     desc: 'Múltiples medios de pago, comprobante fotográfico obligatorio en transferencias, rendiciones de efectivo en 1 paso con saldo automático.',
   },
   {
+    icon: History,
+    title: 'Un histórico que no se borra',
+    desc: 'Períodos continuos: nada se reincia el mes que viene. Cada visita, cobro y certificado queda registrado y se puede auditar.',
+  },
+  {
     icon: FileText,
-    title: 'Certificados Municipales',
+    title: 'Certificados municipales',
     desc: 'Histórico importado (1.356+), generación desde visitas realizadas, PDF calibrado 2 por hoja, continuidad por cliente configurable.',
   },
-];
+  {
+    icon: Download,
+    title: 'Listo para tu administración',
+    desc: 'Exportá el balance, los certificados del mes y los cobros en CSV o PDF cuando tu contador los pida, sin retipar nada.',
+  },
+]
+
+const steps = [
+  {
+    n: '01',
+    title: 'Cargás clientes y recorridos',
+    desc: 'Importás tu cartera, asignás cada cliente a un día y a un operador. El sistema arma la agenda de la semana.',
+  },
+  {
+    n: '02',
+    title: 'El operario trabaja desde el celular',
+    desc: 'Abre la app, marca la visita, cobra y saca la foto del comprobante. Nada de cuaderno, nada de papel.',
+  },
+  {
+    n: '03',
+    title: 'Vos auditás todo desde el panel',
+    desc: 'Cobros, rendiciones, certificados y progreso de visitas en una sola pantalla, en vivo.',
+  },
+]
 
 export function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-[var(--color-bg)] to-white py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="stagger">
-              <span className="label-brutal text-[var(--color-accent)] mb-4">SaaS B2B • Operaciones de Campo</span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-[var(--color-ink)] mb-6">
+      <section className="relative overflow-hidden bg-linear-to-b from-bg via-bg to-surface">
+        <div className="absolute inset-0 hero-glow" aria-hidden="true" />
+        <div className="absolute inset-0 bg-grid opacity-70" aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 lg:pt-20 lg:pb-28">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-16 items-center">
+            <div>
+              <span className="chip chip-accent">
+                <span className="h-2 w-2 rounded-full bg-accent animate-pulse-dot" aria-hidden="true" />
+                Operaciones de campo, sin planillas
+              </span>
+
+              <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.06] text-ink">
                 Tu base de operaciones
                 <br />
-                <span className="text-[var(--color-accent)]">en campo</span>
+                <span className="text-accent">en campo</span>
               </h1>
-              <p className="text-lg text-[var(--color-ink-soft)] mb-8 max-w-xl">
-                CampoBase reemplaza planillas, WhatsApps y papel. Gestiona recorridos, visitas, cobros y certificados municipales
-                en una sola plataforma. Usado por empresas de servicios, control de plagas, mantenimiento y logística.
+
+              <p className="mt-6 text-lg text-ink-soft max-w-xl">
+                CampoBase reemplaza planillas, WhatsApps y papel. Gestiona recorridos, visitas,
+                cobros y certificados municipales en una sola plataforma, con una app de campo
+                que el operario usa desde el celular.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Link to="/contact" className="btn btn-primary text-lg px-8 py-4">
-                  Solicitar Demo Gratis
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <Link to="/contact" className="btn btn-brand btn-lg">
+                  Solicitar demo
+                  <ArrowRight className="w-5 h-5 ml-1" aria-hidden="true" />
                 </Link>
-                <Link to="/features" className="btn btn-secondary text-lg px-8 py-4">
-                  Ver Características
-                </Link>
+                <a href="#sistema" className="btn btn-secondary btn-lg">
+                  Ver el sistema
+                </a>
               </div>
 
-              {/* Pilot Stats */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 stagger">
-                {pilotStats.map((stat, i) => (
-                  <div key={i} className="bg-white border-2 border-[var(--color-border)] rounded-brutal-lg p-6 text-center">
-                    <div className="w-12 h-12 rounded-brutal bg-[var(--color-accent-soft)] flex items-center justify-center mx-auto mb-3">
-                      <stat.icon className="w-6 h-6 text-[var(--color-accent)]" aria-hidden="true" />
-                    </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-[var(--color-accent)] font-mono">{stat.value}</div>
-                    <div className="font-semibold text-[var(--color-ink)] mt-1">{stat.label}</div>
-                  </div>
-                ))}
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-ink-muted">
+                <div>
+                  Usado por <span className="font-semibold text-ink">equipos de campo</span>
+                </div>
+                <span aria-hidden="true">•</span>
+                <div>
+                  <span className="font-mono font-semibold text-accent">1.356+</span> certificados generados
+                </div>
+                <span aria-hidden="true">•</span>
+                <div>
+                  <span className="font-mono font-semibold text-accent">148</span> clientes activos
+                </div>
               </div>
+
+              <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-ink-soft">
+                {['Sin tarjeta de crédito', 'Configuración en minutos', 'Soporte incluido'].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-accent" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Screenshot / Product Preview */}
-            <div className="relative hidden lg:block stagger">
-              <div className="bg-white border-2 border-[var(--color-border)] rounded-brutal-lg shadow-brutal overflow-hidden">
-                <div className="bg-[var(--color-ink)] px-4 py-3 flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="text-white text-xs font-mono ml-auto">campobase.vercel.app</span>
-                </div>
-                <div className="p-6 bg-[var(--color-bg)] min-h-[320px]">
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-white border-2 border-[var(--color-border)] rounded-brutal p-4">
-                      <div className="label-brutal text-[var(--color-accent)] mb-2">RESUMEN DIARIO</div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-ink-muted)]">Programadas</span><span className="font-bold font-mono text-[var(--color-ink)]">24</span></div>
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-accent)]">Realizadas</span><span className="font-bold font-mono text-[var(--color-accent)]">18</span></div>
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-warn)]">Pendientes</span><span className="font-bold font-mono text-[var(--color-warn)]">6</span></div>
-                      </div>
-                    </div>
-                    <div className="bg-white border-2 border-[var(--color-border)] rounded-brutal p-4">
-                      <div className="label-brutal text-[var(--color-warn)] mb-2">COBROS HOY</div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-ink-muted)]">Efectivo</span><span className="font-bold font-mono">$ 245,000</span></div>
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-info)]">Transferencia</span><span className="font-bold font-mono text-[var(--color-info)]">$ 180,000</span></div>
-                      </div>
-                    </div>
-                    <div className="bg-white border-2 border-[var(--color-border)] rounded-brutal p-4">
-                      <div className="label-brutal text-[var(--color-info)] mb-2">CERTIFICADOS</div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-ink-muted)]">Este mes</span><span className="font-bold font-mono">12</span></div>
-                        <div className="flex justify-between text-sm"><span className="text-[var(--color-ink-muted)]">Históricos</span><span className="font-bold font-mono">1,356</span></div>
-                      </div>
-                    </div>
-                  </div>
+            <div className="relative">
+              <div className="animate-float" data-reveal="scale">
+                <ShotFrame
+                  src="/screenshots/dashboard-admin.webp"
+                  alt="Panel de CampoBase con el resumen operativo del día, cobros y estado de las visitas"
+                  label="app.campobase"
+                  loading="eager"
+                />
+              </div>
+
+              <div
+                className="hidden sm:flex absolute -bottom-8 -left-6 items-center gap-3 surface-raised px-4 py-3"
+                data-reveal="left"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-brutal bg-accent-soft">
+                  <DollarSign className="w-4 h-4 text-accent" aria-hidden="true" />
+                </span>
+                <div>
+                  <div className="label-brutal text-ink-muted">Cobrado hoy</div>
+                  <div className="font-mono text-lg font-bold text-ink">$ 72.000</div>
                 </div>
               </div>
             </div>
@@ -111,43 +240,88 @@ export function Home() {
         </div>
       </section>
 
-      {/* Trust / Social Proof */}
-      <section className="py-16 bg-white border-y-2 border-[var(--color-border)]">
+      {/* Métricas del pilot */}
+      <section className="py-14 lg:py-16 bg-surface border-y border-border-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="label-brutal text-[var(--color-accent)]">Empresas que confían</span>
-            <h2 className="text-3xl font-bold text-[var(--color-ink)]">Empresas que usan CampoBase</h2>
-          </div>
-          <div className="flex items-center justify-center gap-8 lg:gap-16 flex-wrap">
-            <div className="text-center p-6">
-              <div className="text-4xl font-bold text-[var(--color-accent)] font-mono">CampoBase</div>
-              <p className="text-slate-500 text-sm mt-1">Empresas de servicios • Control de plagas • Mantenimiento • Logística</p>
-              <div className="mt-3 flex items-center justify-center gap-4 text-sm text-[var(--color-ink-muted)]">
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[var(--color-accent)]"></span>Empresas de servicios</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[var(--color-info)]"></span>Control de plagas</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[var(--color-warn)]"></span>Mantenimiento</span>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" data-reveal-stagger>
+            {pilotStats.map((stat) => (
+              <div key={stat.label} className="surface-raised p-6 text-center">
+                <div className="w-12 h-12 rounded-brutal bg-accent-soft flex items-center justify-center mx-auto mb-3">
+                  <stat.icon className="w-6 h-6 text-accent" aria-hidden="true" />
+                </div>
+                <div className="text-3xl lg:text-4xl font-bold text-accent font-mono">{stat.value}</div>
+                <div className="font-semibold text-ink mt-1">{stat.label}</div>
               </div>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* El sistema en acción (slider) */}
+      <section id="sistema" className="py-20 lg:py-28 bg-bg scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ProductSlider slides={slides} />
+        </div>
+      </section>
+
+      {/* Rubros */}
+      <section className="py-14 bg-surface border-y border-border-subtle">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="label-brutal text-ink-muted" data-reveal>
+            Pensado para equipos que trabajan en campo
+          </span>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4" data-reveal-stagger>
+            {rubros.map((rubro) => (
+              <span key={rubro} className="text-lg lg:text-xl font-bold text-ink-soft">
+                {rubro}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cómo funciona */}
+      <section className="py-20 lg:py-28 bg-bg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl" data-reveal>
+            <span className="label-brutal text-accent">Cómo funciona</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-ink mt-2">
+              De la planilla al sistema, en tres pasos
+            </h2>
+          </div>
+
+          <ol className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal-stagger>
+            {steps.map((step) => (
+              <li key={step.n} className="surface-raised p-6 lg:p-8">
+                <span className="font-mono text-sm font-bold text-accent">{step.n}</span>
+                <h3 className="mt-3 text-lg font-bold text-ink">{step.title}</h3>
+                <p className="mt-2 text-ink-soft leading-relaxed">{step.desc}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       {/* Value Props */}
-      <section className="py-20 lg:py-28 bg-[var(--color-bg)]">
+      <section className="py-20 lg:py-28 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="label-brutal text-[var(--color-accent)]">Por qué CampoBase</span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--color-ink)] mt-2">Diseñado para la operación real</h2>
-            <p className="text-[var(--color-ink-soft)] mt-3 max-w-2xl mx-auto">No es un CRM genérico. Fue construido en campo, con operadores reales, resolviendo problemas reales de empresas de servicios.</p>
+          <div className="max-w-2xl" data-reveal>
+            <span className="label-brutal text-accent">Por qué CampoBase</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-ink mt-2">Diseñado para la operación real</h2>
+            <p className="text-ink-soft mt-3">
+              No es un CRM genérico. Fue construido en campo, con operadores reales, resolviendo
+              problemas reales de empresas de servicios.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
-            {valueProps.map((prop, i) => (
-              <article key={i} className="card-brutal p-6 hover:shadow-brutal transition-shadow duration-200">
-                <div className="w-12 h-12 rounded-brutal bg-[var(--color-accent-soft)] flex items-center justify-center mb-4">
-                  <prop.icon className="w-6 h-6 text-[var(--color-accent)]" aria-hidden="true" />
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
+            {valueProps.map((prop) => (
+              <article key={prop.title} className="surface-raised p-6 transition-shadow duration-200 hover:shadow-lift">
+                <div className="w-12 h-12 rounded-brutal bg-accent-soft flex items-center justify-center mb-4">
+                  <prop.icon className="w-6 h-6 text-accent" aria-hidden="true" />
                 </div>
-                <h3 className="text-lg font-bold text-[var(--color-ink)] mb-2">{prop.title}</h3>
-                <p className="text-[var(--color-ink-soft)] leading-relaxed">{prop.desc}</p>
+                <h3 className="text-lg font-bold text-ink mb-2">{prop.title}</h3>
+                <p className="text-ink-soft leading-relaxed">{prop.desc}</p>
               </article>
             ))}
           </div>
@@ -155,19 +329,26 @@ export function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[var(--color-ink)] text-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent-soft)] mb-4">¿Listo para digitalizar tu operación?</span>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Prueba CampoBase gratis por 14 días</h2>
-          <p className="text-slate-300 mb-8 max-w-xl mx-auto">Sin tarjeta de crédito. Configuración en minutos. Soporte incluido.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-white text-[var(--color-ink)] hover:bg-slate-100">
-              Empezar Demo Gratis
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+      <section className="relative overflow-hidden bg-ink text-on-dark py-20 lg:py-28">
+        <div className="absolute inset-0 hero-glow opacity-60" aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="label-brutal text-accent-soft mb-4" data-reveal>
+            ¿Listo para digitalizar tu operación?
+          </span>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6" data-reveal>
+            Probá CampoBase con tu propia operación
+          </h2>
+          <p className="text-on-dark-muted mb-8 max-w-xl mx-auto" data-reveal>
+            Sin tarjeta de crédito. Configuración en minutos. Soporte incluido.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center" data-reveal>
+            <Link to="/contact" className="btn btn-brand btn-lg">
+              Empezar demo gratis
+              <ArrowRight className="w-5 h-5 ml-1" aria-hidden="true" />
             </Link>
-            <Link to="/features" className="btn btn-outline border-white text-white hover:bg-white/10 text-lg px-8 py-4">Ver Características</Link>
+            <Link to="/features" className="btn btn-outline border-on-dark text-on-dark btn-lg">
+              Ver características
+            </Link>
           </div>
         </div>
       </section>

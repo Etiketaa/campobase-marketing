@@ -48,11 +48,11 @@ export function Features() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-[var(--color-bg)] to-white py-20 lg:py-32">
+      <section className="relative bg-linear-to-b from-bg to-surface py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent)] mb-4">Características Completas</span>
-          <h1 className="text-4xl lg:text-5xl font-bold text-[var(--color-ink)] mb-6">Todo lo que necesitas para operar en campo</h1>
-          <p className="text-lg text-[var(--color-ink-soft)] max-w-2xl mx-auto">
+          <span className="label-brutal text-accent mb-4">Características Completas</span>
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-6">Todo lo que necesitas para operar en campo</h1>
+          <p className="text-lg text-ink-soft max-w-2xl mx-auto">
             CampoBase no es un CRM genérico. Fue construido en campo, con operadores reales, resolviendo problemas reales
             de empresas de servicios, control de plagas, mantenimiento y logística.
           </p>
@@ -61,20 +61,20 @@ export function Features() {
 
       {/* Feature Categories */}
       {featureCategories.map((category, catIndex) => (
-        <section key={catIndex} className={`py-20 ${catIndex % 2 === 0 ? 'bg-white' : 'bg-[var(--color-bg)]'}`}>
+        <section key={catIndex} className={`py-20 ${catIndex % 2 === 0 ? 'bg-surface' : 'bg-bg'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3 mb-12">
-              <category.icon className="w-8 h-8 text-[var(--color-accent)]" aria-hidden="true" />
-              <h2 className="text-3xl lg:text-4xl font-bold text-[var(--color-ink)]">{category.category}</h2>
+              <category.icon className="w-8 h-8 text-accent" aria-hidden="true" />
+              <h2 className="text-3xl lg:text-4xl font-bold text-ink">{category.category}</h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
               {category.features.map((feature, i) => (
                 <article key={i} className="card-brutal p-6 hover:shadow-brutal transition-shadow duration-200 h-full">
-                  <div className="w-12 h-12 rounded-brutal bg-[var(--color-accent-soft)] flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-[var(--color-accent)]" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-brutal bg-accent-soft flex items-center justify-center mb-4">
+                    <feature.icon className="w-6 h-6 text-accent" aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg font-bold text-[var(--color-ink)] mb-2">{feature.title}</h3>
-                  <p className="text-[var(--color-ink-soft)] leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-lg font-bold text-ink mb-2">{feature.title}</h3>
+                  <p className="text-ink-soft leading-relaxed">{feature.desc}</p>
                 </article>
               ))}
             </div>
@@ -83,25 +83,25 @@ export function Features() {
       ))}
 
       {/* Technical Specs */}
-      <section className="py-20 bg-[var(--color-ink)] text-white">
+      <section className="py-20 bg-ink text-on-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="label-brutal text-[var(--color-accent-soft)] mb-4">Especificaciones Técnicas</span>
+            <span className="label-brutal text-accent-soft mb-4">Especificaciones Técnicas</span>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Arquitectura lista para escalar</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: 'Frontend', items: ['React 19 + Vite', 'TypeScript strict', 'Tailwind CSS v4', 'React Router v6'] },
               { title: 'Backend', items: ['Node.js + Express', 'TypeScript', 'Supabase (PostgreSQL)', 'Serverless (Vercel)'] },
               { title: 'Base de Datos', items: ['PostgreSQL (Supabase)', 'RLS habilitado', 'Service role backend', 'Migraciones versionadas'] },
               { title: 'Infraestructura', items: ['Vercel (serverless)', 'Supabase Storage', 'CDN global', 'SSL automático'] },
             ].map((spec, i) => (
-              <article key={i} className="card-brutal p-6 bg-slate-900/50 border-slate-700">
-                <h3 className="label-brutal text-[var(--color-accent-soft)] mb-4">{spec.title}</h3>
+              <article key={i} className="card-brutal p-6 bg-ink/50 border-ink-soft">
+                <h3 className="label-brutal text-accent-soft mb-4">{spec.title}</h3>
                 <ul className="space-y-2">
                   {spec.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2 text-slate-300 text-sm">
-                      <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0"></span>
+                    <li key={j} className="flex items-center gap-2 text-on-dark-muted text-sm">
+                      <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
                       {item}
                     </li>
                   ))}
@@ -113,19 +113,19 @@ export function Features() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--color-ink)] text-white">
+      <section className="py-20 bg-ink text-on-dark">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent-soft)] mb-4">¿Listo para digitalizar tu operación?</span>
+          <span className="label-brutal text-accent-soft mb-4">¿Listo para digitalizar tu operación?</span>
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">Prueba CampoBase gratis por 14 días</h2>
-          <p className="text-slate-300 mb-8 max-w-xl mx-auto">Sin tarjeta de crédito. Configuración en minutos. Soporte incluido.</p>
+          <p className="text-on-dark-muted mb-8 max-w-xl mx-auto">Sin tarjeta de crédito. Configuración en minutos. Soporte incluido.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-white text-[var(--color-ink)] hover:bg-slate-100">
+            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-surface text-ink hover:bg-surface-2">
               Empezar Gratis Ahora
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link to="/features" className="btn btn-outline border-white text-white hover:bg-white/10 text-lg px-8 py-4">Ver Características</Link>
+            <Link to="/features" className="btn btn-outline border-on-dark text-on-dark hover:bg-surface/10 text-lg px-8 py-4">Ver Características</Link>
           </div>
         </div>
       </section>

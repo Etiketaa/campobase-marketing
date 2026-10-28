@@ -14,8 +14,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-[var(--color-bg)] text-[var(--color-ink)] antialiased">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-bg text-ink antialiased">
+    <div id="root">
+      <!-- Fallback mientras React monta (lo reemplaza el root render) -->
+      <div class="flex min-h-screen flex-col items-center justify-center bg-bg px-6 text-ink">
+        <div class="w-full max-w-sm border-2 border-border rounded-brutal-lg bg-surface p-10 text-center shadow-brutal-sm">
+          <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-brutal-lg bg-ink">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <h1 class="text-xl font-bold">CampoBase</h1>
+          <p class="mt-2 text-sm text-ink-muted">Cargando la aplicación…</p>
+          <div class="mt-6 h-1.5 w-full overflow-hidden rounded-brutal bg-surface-2">
+            <div class="animate-pulse-bar h-full bg-accent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="mx-auto max-w-xl border-2 border-danger rounded-brutal-lg bg-danger-soft p-6 text-center text-sm text-danger-ink">
+        CampoBase necesita JavaScript para funcionar. Activá JavaScript y recargá la página.
+      </div>
+    </noscript>
+
+    <script>
+      // Aviso de error global: si el bundle no carga o lanza una excepción.
+      // Sin estilos inline ni innerHTML: todo con clases del design system.
+      (function () {
+        var shown = false;
+        function mostrarError(titulo, detalle) {
+          if (shown) return;
+          shown = true;
+          var root = document.getElementById('root');
+          if (!root) return;
+          var banner = document.createElement('div');
+          banner.className = 'mx-auto max-w-xl border-2 border-danger rounded-brutal-lg bg-danger-soft p-6 text-center';
+          var tituloEl = document.createElement('strong');
+          tituloEl.className = 'block font-bold text-danger-ink';
+          tituloEl.textContent = titulo;
+          var detalleEl = document.createElement('pre');
+          detalleEl.className = 'mt-3 max-h-60 overflow-auto whitespace-pre-wrap text-left font-mono text-xs text-danger-ink';
+          detalleEl.textContent = detalle || 'Error desconocido';
+          banner.appendChild(tituloEl);
+          banner.appendChild(detalleEl);
+          root.appendChild(banner);
+        }
+        window.addEventListener('error', function (e) {
+          mostrarError('Error de JavaScript', (e.error && e.error.stack) || e.message);
+        });
+        window.addEventListener('unhandledrejection', function (e) {
+          var reason = e.reason || {};
+          mostrarError('Promesa rechazada', reason.stack || reason.message);
+        });
+      })();
+    </script>
+
+    <script type="module" crossorigin src="/src/main.tsx"></script>
   </body>
 </html>

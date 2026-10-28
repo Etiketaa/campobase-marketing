@@ -76,13 +76,13 @@ export function Pricing() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-[var(--color-bg)] to-white py-20 lg:py-32">
+      <section className="relative bg-linear-to-b from-bg to-surface py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent)] mb-4">Precios Transparentes</span>
-          <h1 className="text-4xl lg:text-5xl font-bold text-[var(--color-ink)] mb-6">
+          <span className="label-brutal text-accent mb-4">Precios Transparentes</span>
+          <h1 className="text-4xl lg:text-5xl font-bold text-ink mb-6">
             Planes que escalan con tu operación
           </h1>
-          <p className="text-lg text-[var(--color-ink-soft)] max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-ink-soft max-w-2xl mx-auto mb-10">
             Sin sorpresas. Sin costos ocultos. Eliges el plan que se adapta a tu tamaño actual
             y escalas cuando creces. 14 días gratis en todos los planes.
           </p>
@@ -90,36 +90,36 @@ export function Pricing() {
       </section>
 
       {/* Plans */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map((plan, i) => (
               <article
                 key={i}
                 className={`relative card-brutal p-6 flex flex-col ${
-                  plan.popular ? 'border-[var(--color-accent)] shadow-brutal relative' : ''
+                  plan.popular ? 'border-accent shadow-brutal relative' : ''
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-[var(--color-accent)] text-white text-xs font-bold px-3 py-1 rounded-brutal">MÁS POPULAR</span>
+                    <span className="bg-accent text-on-dark text-xs font-bold px-3 py-1 rounded-brutal">MÁS POPULAR</span>
                   </div>
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-[var(--color-ink)] mb-2">{plan.name}</h3>
+                  <h3 className="text-xl font-bold text-ink mb-2">{plan.name}</h3>
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className="text-4xl font-bold text-[var(--color-ink)]">{plan.price}</span>
-                    <span className="text-[var(--color-ink-muted)]">{plan.period}</span>
+                    <span className="text-4xl font-bold text-ink">{plan.price}</span>
+                    <span className="text-ink-muted">{plan.period}</span>
                   </div>
-                  <p className="text-[var(--color-ink-soft)] text-sm mb-6">{plan.description}</p>
+                  <p className="text-ink-soft text-sm mb-6">{plan.description}</p>
                 </div>
 
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm">
-                      <CheckCircle2 className="w-5 h-5 text-[var(--color-accent)] shrink-0 mt-0.5" aria-hidden="true" />
-                      <span className="text-[var(--color-ink-soft)]">{feature}</span>
+                      <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
+                      <span className="text-ink-soft">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -139,20 +139,20 @@ export function Pricing() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-[var(--color-bg)]">
+      <section className="py-20 bg-bg">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="label-brutal text-[var(--color-accent)] mb-4">Preguntas Frecuentes</span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--color-ink)]">Respuestas rápidas</h2>
+            <span className="label-brutal text-accent mb-4">Preguntas Frecuentes</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-ink">Respuestas rápidas</h2>
           </div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <details key={i} className="card-brutal group">
                 <summary className="flex items-center justify-between p-4 cursor-pointer list-none">
-                  <span className="font-bold text-[var(--color-ink)]">{faq.q}</span>
-                  <svg className="w-5 h-5 text-[var(--color-ink-muted)] group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  <span className="font-bold text-ink">{faq.q}</span>
+                  <svg className="w-5 h-5 text-ink-muted group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </summary>
-                <div className="px-4 pb-4 text-[var(--color-ink-soft)] border-t border-[var(--color-border)]">
+                <div className="px-4 pb-4 text-ink-soft border-t border-border">
                   {faq.a}
                 </div>
               </details>
@@ -162,19 +162,19 @@ export function Pricing() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[var(--color-ink)] text-white">
+      <section className="py-20 bg-ink text-on-dark">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="label-brutal text-[var(--color-accent-soft)] mb-4">¿Listo para empezar?</span>
+          <span className="label-brutal text-accent-soft mb-4">¿Listo para empezar?</span>
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">Prueba CampoBase gratis por 14 días</h2>
-          <p className="text-slate-300 mb-8 max-w-xl mx-auto">Sin tarjeta de crédito. Configuración en minutos. Soporte incluido.</p>
+          <p className="text-on-dark-muted mb-8 max-w-xl mx-auto">Sin tarjeta de crédito. Configuración en minutos. Soporte incluido.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-white text-[var(--color-ink)] hover:bg-slate-100">
+            <Link to="/contact" className="btn btn-primary text-lg px-8 py-4 bg-surface text-ink hover:bg-surface-2">
               Empezar Gratis Ahora
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link to="/features" className="btn btn-outline border-white text-white hover:bg-white/10 text-lg px-8 py-4">Ver Características</Link>
+            <Link to="/features" className="btn btn-outline border-on-dark text-on-dark hover:bg-surface/10 text-lg px-8 py-4">Ver Características</Link>
           </div>
         </div>
       </section>
