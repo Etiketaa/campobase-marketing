@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Shield,
@@ -9,9 +10,11 @@ import {
   History,
   Download,
   ArrowRight,
+  Play,
 } from 'lucide-react'
 import { ShotFrame } from '../components/ShotFrame'
 import { ProductSlider, type Slide } from '../components/ProductSlider'
+import { DemoModal } from '../components/DemoModal'
 
 const pilotStats = [
   { value: '148', label: 'Clientes activos', icon: Users },
@@ -153,6 +156,8 @@ const steps = [
 ]
 
 export function Home() {
+  const [demoOpen, setDemoOpen] = useState(false)
+
   return (
     <>
       {/* Hero */}
@@ -184,9 +189,10 @@ export function Home() {
                   Solicitar demo
                   <ArrowRight className="w-5 h-5 ml-1" aria-hidden="true" />
                 </Link>
-                <a href="#sistema" className="btn btn-secondary btn-lg">
-                  Ver el sistema
-                </a>
+                <button onClick={() => setDemoOpen(true)} className="btn btn-secondary btn-lg">
+                  <Play className="w-5 h-5" aria-hidden="true" />
+                  Ver demo interactiva
+                </button>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-ink-muted">
@@ -343,15 +349,17 @@ export function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center" data-reveal>
             <Link to="/contact" className="btn btn-brand btn-lg">
-              Empezar demo gratis
+              Solicitar demo
               <ArrowRight className="w-5 h-5 ml-1" aria-hidden="true" />
             </Link>
-            <Link to="/features" className="btn btn-outline border-on-dark text-on-dark btn-lg">
-              Ver características
-            </Link>
+            <button onClick={() => setDemoOpen(true)} className="btn btn-outline border-on-dark text-on-dark btn-lg">
+              <Play className="w-5 h-5" aria-hidden="true" />
+              Ver demo interactiva
+            </button>
           </div>
         </div>
       </section>
+      <DemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
     </>
   )
 }

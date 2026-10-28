@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Play } from 'lucide-react'
+import { DemoModal } from './DemoModal'
 
 const navItems = [
   { href: '/', label: 'Inicio' },
@@ -14,6 +15,7 @@ const navItems = [
 export function Header() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [demoOpen, setDemoOpen] = useState(false)
 
   // El menú móvil se cierra al cambiar de ruta
   useEffect(() => {
@@ -21,44 +23,49 @@ export function Header() {
   }, [location.pathname])
 
   return (
-    <header className="sticky top-0 z-50 nav-glass">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="CampoBase - Inicio">
-            <div className="w-10 h-10 rounded-brutal-lg bg-ink flex items-center justify-center">
-              <svg className="w-6 h-6 text-on-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <span className="font-bold text-xl text-ink">CampoBase</span>
-          </Link>
-
-          {/* Navegación desktop */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
-            {navItems.map((item) => {
-              const isActive = location.pathname === item.href
-              return (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className={`link-underline px-3 py-2 text-sm font-semibold transition-colors duration-200 ${
-                    isActive ? 'text-accent' : 'text-ink-soft hover:text-ink'
-                  }`}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {item.label}
-                </Link>
-              )
-            })}
-          </nav>
-
-          {/* CTA desktop */}
-          <div className="hidden lg:flex items-center shrink-0">
-            <Link to="/contact" className="btn btn-brand">
-              Solicitar demo
+    <>
+      <header className="sticky top-0 z-50 nav-glass">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="CampoBase - Inicio">
+              <div className="w-10 h-10 rounded-brutal-lg bg-ink flex items-center justify-center">
+                <svg className="w-6 h-6 text-on-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <span className="font-bold text-xl text-ink">CampoBase</span>
             </Link>
-          </div>
+
+            {/* Navegación desktop */}
+            <nav className="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.href
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={`link-underline px-3 py-2 text-sm font-semibold transition-colors duration-200 ${
+                      isActive ? 'text-accent' : 'text-ink-soft hover:text-ink'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </nav>
+
+            {/* CTA desktop */}
+            <div className="hidden lg:flex items-center gap-2 shrink-0">
+              <button onClick={() => setDemoOpen(true)} className="btn">
+                <Play className="w-4 h-4" />
+                Ver demo
+              </button>
+              <Link to="/contact" className="btn btn-brand">
+                Solicitar demo
+              </Link>
+            </div>
 
           {/* Botón de menú mobile */}
           <button
@@ -103,11 +110,17 @@ export function Header() {
               )
             })}
           </ul>
-          <Link to="/contact" className="btn btn-brand w-full mt-4">
+          <button onClick={() => setDemoOpen(true)} className="btn w-full mt-2">
+            <Play className="w-4 h-4" />
+            Ver demo interactiva
+          </button>
+          <Link to="/contact" className="btn btn-brand w-full mt-2">
             Solicitar demo
           </Link>
         </nav>
       ) : null}
-    </header>
+      </header>
+      <DemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
+    </>
   )
 }
